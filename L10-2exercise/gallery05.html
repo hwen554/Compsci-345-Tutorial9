@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<title>Example Gallery</title>
+<!-- author: Gerald Weber, 2020-05-07 -->
+<!-- all images from Wikimedia commons -->
+<!-- changes: Add three tag to help pages change texts when click images -->
+</head>
+<link rel=stylesheet type="text/css" href="main.css">
+<body> 
+<div style="float:right; width:400px; padding-right: 450px; "id="div"></div>
+<img id="fullview"  onclick='makeMax();'  ondblclick ='myReset();' src="full/01.jpg">
+<div class="flex-container" >
+<a href="javascript: changeText(1);">	
+<img class="thumb" id="thumb1" data-ord="1"  onclick='changeMainImg(this);' src="full/01.jpg" alt="a butterfly">
+</a>	
+<img class="thumb" id="thumb2"data-ord="2"  onclick='changeMainImg(this);' src="full/02.jpg" alt="peaches">
+<img class="thumb" id="thumb3"data-ord="3"  onclick='changeMainImg(this);' src="full/03.jpg" alt="a frog">
+<a href="javascript: changeText(4);">	
+<img class="thumb" id="thumb4"data-ord="4"  onclick='changeMainImg(this);' src="full/04.jpg" alt="colour pencils">
+</a>
+<img class="thumb" id="thumb5"data-ord="5"  onclick='changeMainImg(this);' src="full/05.jpg" alt="escalator">
+<img class="thumb" id="thumb6"data-ord="6"  onclick='changeMainImg(this);' src="full/06.jpg" alt="a squirrel">
+<img class="thumb" id="thumb7"data-ord="7"  onclick='changeMainImg(this);' src="full/07.jpg" alt="silvereye">
+<img class="thumb" id="thumb8"data-ord="8"  onclick='changeMainImg(this);' src="full/08.jpg" alt="romanesco">
+<a href="javascript: changeText(9);">
+<img class="thumb" id="thumb9"data-ord="9"  onclick='changeMainImg(this);' src="full/09.jpg" alt="a tree in spring">
+</a>
+</div>
+
+
+<script >
+    const thumbs = document.querySelectorAll('.thumb');
+	const firstThs = document.querySelectorAll('.firstTh');
+ 	const full = document.getElementById("fullview");
+	full.alt=thumb1.alt;
+   	var current;
+    function changeMainImg(that) {
+        full.src=that.src;
+        full.alt=that.alt;
+		current=that;	
+    }
+	//add the function which can change texts.
+	function changeText(value) {
+    var div = document.getElementById("div");
+    var text = "";
+
+    if (value == 1) text = "Butterfly This butterfly ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ";
+    if (value == 4) text = "Colour pencils This nice image ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud";
+    if (value == 9) text = "A Tree in Spring This tree ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo";
+
+    div.innerHTML = text;
+	}
+	var maxorder = -100;
+    function makeMax() {
+	    maxorder--;
+		if (current) current.style.order=maxorder;
+    }
+	function myReset() {
+	   thumbs.forEach(thumb => { 
+	     thumb.style.order=thumb.dataset.ord;
+		 });
+	   full.alt=thumb1.alt;
+    }
+</script>
+
+
+</body>
+</html>
+
+
+
+
+

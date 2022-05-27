@@ -1,0 +1,14 @@
+img {  
+  height:465px;  
+  width:616px;  
+  border: solid 4px transparent;  
+  float: left;  
+}  
+
+img.thumb {  
+  height:150px;  
+  width:200px;  
+}  
+
+
+ 

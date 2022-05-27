@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<title>Example Gallery</title>
+<!-- author: Gerald Weber, 2020-05-07 -->
+<!-- all images from Wikimedia commons -->
+</head>
+<link rel=stylesheet type="text/css" href="main.css">
+<body> 
+
+<img id="fullview"  onclick='makeMax();'  ondblclick ='myReset();' src="full/01.jpg" alt="a butterfly">
+<div class="flex-container">
+<img class="thumb" data-ord="1"  onclick='changeMainImg(this);' src="full/01.jpg" alt="a butterfly">
+<img class="thumb" data-ord="2"  onclick='changeMainImg(this);' src="full/02.jpg" alt="peaches">
+<img class="thumb" data-ord="3"  onclick='changeMainImg(this);' src="full/03.jpg" alt="a frog">
+<img class="thumb" data-ord="4"  onclick='changeMainImg(this);' src="full/04.jpg" alt="colour pencils">
+<img class="thumb" data-ord="5"  onclick='changeMainImg(this);' src="full/05.jpg" alt="escalator">
+<img class="thumb" data-ord="6"  onclick='changeMainImg(this);' src="full/06.jpg" alt="a squirrel">
+<img class="thumb" data-ord="7"  onclick='changeMainImg(this);' src="full/07.jpg" alt="silvereye">
+<img class="thumb" data-ord="8"  onclick='changeMainImg(this);' src="full/08.jpg" alt="romanesco">
+<img class="thumb" data-ord="9"  onclick='changeMainImg(this);' src="full/09.jpg" alt="a tree in spring">
+</div>
+
+
+<script >
+    const thumbs = document.querySelectorAll('.thumb');
+    var current;
+	var full = document.getElementById("fullview");
+    function changeMainImg(that) {
+        full.src=that.src;
+        full.alt=that.alt;
+		current=that;
+    }
+	var maxorder = -100;
+    function makeMax() {
+	    maxorder--;
+		if (current) current.style.order=maxorder;
+    }
+	function myReset() {
+	   thumbs.forEach(thumb => { thumb.style.order=thumb.dataset.ord;});
+    }
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
